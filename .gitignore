@@ -1,0 +1,15 @@
+# Env - jangan push secret (basic)
+.env
+.env.local
+.env.*.local
+.env.example
+*.key
+*.pem
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

@@ -1,0 +1,1358 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAJA SAWIT vs RAJA SOLO — Dua Raja. Satu Tahta.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --gold:#c9a84c;
+  --gold-light:#f0d080;
+  --gold-dark:#8b6914;
+  --green-deep:#0a1a0a;
+  --green-mid:#0f2e0f;
+  --green-dark:#071407;
+  --black:#050505;
+  --red:#c0392b;
+  --red-bright:#e74c3c;
+  --white:#f5f0e8;
+  --muted:#8a8272;
+  --glass:rgba(255,255,255,0.04);
+  --glass-border:rgba(201,168,76,0.2);
+}
+html{scroll-behavior:smooth}
+body{
+  background:#050505;
+  color:var(--white);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  cursor:none;
+}
+
+/* CUSTOM CURSOR */
+#cursor{position:fixed;width:12px;height:12px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s;mix-blend-mode:difference}
+#cursor-ring{position:fixed;width:40px;height:40px;border:1px solid rgba(201,168,76,0.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .15s ease-out,width .3s,height .3s}
+#cursor.hover{width:20px;height:20px}
+#cursor-ring.hover{width:60px;height:60px;border-color:var(--gold)}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:#050505}
+::-webkit-scrollbar-thumb{background:var(--gold-dark);border-radius:2px}
+
+/* NOISE OVERLAY */
+body::before{
+  content:'';position:fixed;top:0;left:0;width:100%;height:100%;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:1000;opacity:.4;
+}
+
+/* NAVBAR */
+nav{
+  position:fixed;top:0;left:0;width:100%;z-index:500;
+  padding:20px 60px;display:flex;align-items:center;justify-content:space-between;
+  transition:all .4s ease;
+}
+nav.scrolled{
+  background:rgba(5,5,5,0.92);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--glass-border);
+  padding:14px 60px;
+}
+.nav-logo{
+  font-family:'Cinzel',serif;font-size:1.6rem;font-weight:900;
+  color:var(--gold);letter-spacing:.2em;text-decoration:none;
+  text-shadow:0 0 20px rgba(201,168,76,0.5);
+}
+.nav-links{display:flex;gap:36px;list-style:none}
+.nav-links a{
+  color:rgba(245,240,232,0.7);text-decoration:none;font-size:.8rem;
+  font-weight:500;letter-spacing:.12em;text-transform:uppercase;
+  transition:color .3s;font-family:'Oswald',sans-serif;
+}
+.nav-links a:hover{color:var(--gold)}
+.nav-cta{
+  background:linear-gradient(135deg,var(--gold),var(--gold-dark));
+  color:#050505;padding:10px 24px;font-size:.75rem;font-weight:700;
+  letter-spacing:.12em;text-transform:uppercase;text-decoration:none;
+  font-family:'Oswald',sans-serif;border:none;cursor:pointer;
+  clip-path:polygon(8px 0,100% 0,calc(100% - 8px) 100%,0 100%);
+  transition:all .3s;box-shadow:0 0 20px rgba(201,168,76,0.3);
+}
+.nav-cta:hover{box-shadow:0 0 40px rgba(201,168,76,0.6);transform:scale(1.03)}
+
+/* HERO SECTION */
+#hero{
+  position:relative;width:100%;height:100vh;min-height:700px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  overflow:hidden;
+}
+.hero-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,
+    #030d03 0%,
+    #0a1a0a 25%,
+    #0d0d0d 50%,
+    #1a0a00 75%,
+    #050505 100%);
+}
+.hero-bg-left{
+  position:absolute;left:0;top:0;width:50%;height:100%;
+  background:radial-gradient(ellipse at 30% 50%,rgba(20,60,10,0.8) 0%,transparent 70%);
+}
+.hero-bg-right{
+  position:absolute;right:0;top:0;width:50%;height:100%;
+  background:radial-gradient(ellipse at 70% 50%,rgba(80,40,0,0.5) 0%,transparent 70%);
+}
+/* LIGHT RAYS */
+.light-rays{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.ray{
+  position:absolute;top:-10%;left:50%;
+  width:2px;height:130%;
+  background:linear-gradient(to bottom,rgba(201,168,76,0.08),transparent);
+  transform-origin:top center;
+}
+.ray:nth-child(1){transform:rotate(-20deg) translateX(-200px)}
+.ray:nth-child(2){transform:rotate(-10deg) translateX(-100px);width:3px;opacity:.6}
+.ray:nth-child(3){transform:rotate(0deg);width:4px;background:linear-gradient(to bottom,rgba(201,168,76,0.12),transparent)}
+.ray:nth-child(4){transform:rotate(10deg) translateX(100px);width:3px;opacity:.6}
+.ray:nth-child(5){transform:rotate(20deg) translateX(200px)}
+
+/* PARTICLES */
+#particles-canvas{position:absolute;inset:0;pointer-events:none}
+
+/* PALM LEAVES */
+.palm-leaf{
+  position:absolute;pointer-events:none;opacity:.25;
+  animation:leafSway 6s ease-in-out infinite;
+}
+.palm-leaf svg{fill:#1a4a0a;filter:drop-shadow(0 0 10px rgba(50,150,20,0.3))}
+.leaf-1{top:5%;left:2%;transform:rotate(-30deg);animation-delay:0s}
+.leaf-2{top:10%;left:8%;transform:rotate(-15deg);animation-delay:1s}
+.leaf-3{bottom:15%;left:0%;transform:rotate(20deg);animation-delay:2s}
+.leaf-4{top:20%;right:3%;transform:rotate(30deg) scaleX(-1);animation-delay:.5s}
+.leaf-5{top:5%;right:8%;transform:rotate(15deg) scaleX(-1);animation-delay:1.5s}
+@keyframes leafSway{0%,100%{transform:rotate(-30deg) translateY(0)}50%{transform:rotate(-25deg) translateY(-8px)}}
+
+/* CHARACTER SILHOUETTES */
+.characters-container{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;justify-content:space-between;align-items:flex-end;
+  height:90%;pointer-events:none;
+}
+.char-sawit{
+  width:38%;max-width:420px;
+  display:flex;align-items:flex-end;justify-content:center;
+  animation:idleLeft 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 60px rgba(50,200,30,0.2)) drop-shadow(-20px 0 40px rgba(20,80,10,0.4));
+}
+.char-solo{
+  width:38%;max-width:420px;
+  display:flex;align-items:flex-end;justify-content:center;
+  animation:idleRight 4s ease-in-out infinite;
+  filter:drop-shadow(0 0 60px rgba(201,168,76,0.25)) drop-shadow(20px 0 40px rgba(150,100,0,0.4));
+  transform:scaleX(-1);
+}
+@keyframes idleLeft{0%,100%{transform:translateY(0) rotate(-.5deg)}50%{transform:translateY(-10px) rotate(.5deg)}}
+@keyframes idleRight{0%,100%{transform:scaleX(-1) translateY(0) rotate(.5deg)}50%{transform:scaleX(-1) translateY(-12px) rotate(-.5deg)}}
+
+.char-svg{width:100%;height:auto}
+
+/* CHARACTER SVG STYLE - SAWIT */
+.sawit-figure .body{fill:#e8e0d0}
+.sawit-figure .shirt{fill:#f5f5f0;stroke:#ddd;stroke-width:1}
+.sawit-figure .skin{fill:#c8956c}
+.sawit-figure .hair{fill:#2a1a0a}
+.sawit-figure .glasses{fill:#111;opacity:.85}
+.sawit-figure .pants{fill:#3a3028}
+.sawit-figure .shoes{fill:#1a0f05}
+.sawit-figure .watch{fill:#c9a84c}
+.sawit-figure .glow{fill:rgba(50,200,20,.1)}
+
+/* HERO CONTENT */
+.hero-content{
+  position:relative;z-index:10;text-align:center;
+  padding:0 20px;margin-bottom:4vh;
+}
+.hero-eyebrow{
+  font-family:'Oswald',sans-serif;font-size:.75rem;letter-spacing:.4em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:16px;
+  opacity:0;animation:fadeUp .8s .3s forwards;
+}
+.hero-title{
+  font-family:'Cinzel',serif;font-size:clamp(2.8rem,8vw,7rem);
+  font-weight:900;line-height:.9;letter-spacing:-.01em;
+  text-transform:uppercase;
+  opacity:0;animation:fadeUp .8s .5s forwards;
+}
+.hero-title .sawit-name{
+  display:block;
+  background:linear-gradient(135deg,#5dcc30,#a8e060,#4ab020);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  text-shadow:none;
+  filter:drop-shadow(0 0 30px rgba(100,220,50,0.4));
+}
+.hero-title .versus{
+  display:block;font-size:clamp(1rem,2.5vw,1.8rem);
+  color:var(--gold);letter-spacing:.5em;margin:8px 0;font-weight:400;
+}
+.hero-title .solo-name{
+  display:block;
+  background:linear-gradient(135deg,#c9a84c,#f0d080,#8b6914);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  filter:drop-shadow(0 0 30px rgba(201,168,76,0.5));
+}
+.hero-tagline{
+  font-size:clamp(.9rem,2vw,1.1rem);color:rgba(245,240,232,.65);
+  letter-spacing:.1em;margin-top:20px;font-style:italic;
+  opacity:0;animation:fadeUp .8s .8s forwards;
+}
+.hero-ctas{
+  display:flex;gap:16px;justify-content:center;margin-top:36px;flex-wrap:wrap;
+  opacity:0;animation:fadeUp .8s 1s forwards;
+}
+.btn-primary{
+  background:linear-gradient(135deg,#c9a84c,#f0d080,#8b6914);
+  color:#050505;padding:16px 40px;font-size:1rem;font-weight:700;
+  font-family:'Oswald',sans-serif;letter-spacing:.1em;text-transform:uppercase;
+  border:none;cursor:pointer;text-decoration:none;display:inline-block;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
+  transition:all .3s;box-shadow:0 0 40px rgba(201,168,76,0.4);
+  position:relative;overflow:hidden;
+}
+.btn-primary::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,transparent 30%,rgba(255,255,255,0.2) 50%,transparent 70%);
+  transform:translateX(-100%);transition:transform .5s;
+}
+.btn-primary:hover::after{transform:translateX(100%)}
+.btn-primary:hover{box-shadow:0 0 60px rgba(201,168,76,0.7);transform:translateY(-2px)}
+.btn-secondary{
+  background:transparent;color:var(--white);
+  padding:16px 40px;font-size:1rem;font-weight:600;
+  font-family:'Oswald',sans-serif;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid rgba(201,168,76,0.4);cursor:pointer;text-decoration:none;
+  display:inline-block;
+  clip-path:polygon(12px 0,100% 0,calc(100% - 12px) 100%,0 100%);
+  transition:all .3s;backdrop-filter:blur(8px);
+}
+.btn-secondary:hover{border-color:var(--gold);background:rgba(201,168,76,0.1);box-shadow:0 0 30px rgba(201,168,76,0.2)}
+
+/* SCROLL INDICATOR */
+.scroll-hint{
+  position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  opacity:0;animation:fadeIn 1s 1.5s forwards;z-index:10;
+}
+.scroll-hint span{font-size:.65rem;letter-spacing:.2em;color:var(--muted);text-transform:uppercase}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,var(--gold),transparent);animation:scrollPulse 2s infinite}
+@keyframes scrollPulse{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* SECTION SHARED */
+section{position:relative;overflow:hidden}
+.section-label{
+  font-family:'Oswald',sans-serif;font-size:.7rem;letter-spacing:.5em;
+  color:var(--gold);text-transform:uppercase;margin-bottom:12px;opacity:.7;
+}
+.section-title{
+  font-family:'Cinzel',serif;font-size:clamp(2rem,5vw,4rem);
+  font-weight:900;text-transform:uppercase;line-height:1;
+  background:linear-gradient(135deg,var(--white),rgba(245,240,232,.6));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.section-title.gold{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light),var(--gold-dark));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.reveal{opacity:0;transform:translateY(40px);transition:opacity .8s ease,transform .8s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* CHARACTERS SECTION */
+#characters{
+  padding:120px 60px;
+  background:linear-gradient(to bottom,#050505,#0a1a0a,#050505);
+}
+.characters-header{text-align:center;margin-bottom:70px}
+.cards-container{
+  display:grid;grid-template-columns:1fr 1fr;gap:30px;
+  max-width:1100px;margin:0 auto;
+}
+.char-card{
+  position:relative;border:1px solid var(--glass-border);
+  background:var(--glass);backdrop-filter:blur(20px);
+  padding:40px;transition:transform .4s cubic-bezier(.25,.46,.45,.94),box-shadow .4s;
+  overflow:hidden;cursor:pointer;
+}
+.char-card::before{
+  content:'';position:absolute;inset:0;opacity:0;transition:opacity .4s;
+}
+.char-card.sawit-card::before{background:radial-gradient(ellipse at 50% 0,rgba(50,200,30,0.12),transparent 70%)}
+.char-card.solo-card::before{background:radial-gradient(ellipse at 50% 0,rgba(201,168,76,0.12),transparent 70%)}
+.char-card:hover::before{opacity:1}
+.char-card:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 40px 80px rgba(0,0,0,.6)}
+.sawit-card:hover{box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 60px rgba(50,200,30,0.15)}
+.solo-card:hover{box-shadow:0 40px 80px rgba(0,0,0,.6),0 0 60px rgba(201,168,76,0.2)}
+
+.char-card-number{
+  font-family:'Cinzel',serif;font-size:4rem;font-weight:900;
+  position:absolute;top:20px;right:24px;opacity:.06;line-height:1;
+}
+.char-card-class{
+  font-family:'Oswald',sans-serif;font-size:.65rem;letter-spacing:.4em;
+  margin-bottom:6px;text-transform:uppercase;
+}
+.char-card.sawit-card .char-card-class{color:#5dcc30}
+.char-card.solo-card .char-card-class{color:var(--gold)}
+.char-card-name{
+  font-family:'Cinzel',serif;font-size:clamp(1.5rem,3vw,2.2rem);
+  font-weight:900;margin-bottom:28px;line-height:1;
+}
+
+/* STAT BARS */
+.stats{display:flex;flex-direction:column;gap:12px;margin-bottom:28px}
+.stat-row{display:flex;align-items:center;gap:12px}
+.stat-label{
+  font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);width:80px;flex-shrink:0;font-family:'Oswald',sans-serif;
+}
+.stat-bar{flex:1;height:6px;background:rgba(255,255,255,.08);border-radius:3px;overflow:hidden}
+.stat-fill{height:100%;border-radius:3px;transition:width 1s ease .3s}
+.sawit-card .stat-fill{background:linear-gradient(to right,#2a8a10,#5dcc30)}
+.solo-card .stat-fill{background:linear-gradient(to right,var(--gold-dark),var(--gold))}
+
+.char-ability{
+  border-top:1px solid var(--glass-border);padding-top:20px;
+}
+.ability-label{
+  font-size:.6rem;letter-spacing:.3em;color:var(--muted);text-transform:uppercase;
+  font-family:'Oswald',sans-serif;margin-bottom:6px;
+}
+.ability-name{
+  font-family:'Cinzel',serif;font-size:1rem;font-weight:700;margin-bottom:8px;
+}
+.sawit-card .ability-name{color:#5dcc30}
+.solo-card .ability-name{color:var(--gold)}
+.ability-desc{font-size:.85rem;color:rgba(245,240,232,.55);line-height:1.6;font-style:italic}
+
+.char-avatar{
+  width:100%;height:180px;margin-bottom:24px;position:relative;
+  display:flex;align-items:center;justify-content:center;overflow:hidden;
+}
+.sawit-card .char-avatar{background:radial-gradient(ellipse,rgba(20,60,10,0.6),transparent)}
+.solo-card .char-avatar{background:radial-gradient(ellipse,rgba(60,40,5,0.6),transparent)}
+
+/* GAMEPLAY SECTION */
+#gameplay{
+  padding:120px 60px;
+  background:linear-gradient(to bottom,#050505,#07100a,#050505);
+}
+.gameplay-header{text-align:center;margin-bottom:70px}
+.features-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:2px;
+  max-width:1100px;margin:0 auto 60px;
+}
+.feature-item{
+  padding:50px 36px;position:relative;overflow:hidden;
+  background:rgba(10,20,10,0.5);border:1px solid var(--glass-border);
+  transition:all .4s;
+}
+.feature-item:hover{background:rgba(20,50,15,0.6);border-color:rgba(201,168,76,.4)}
+.feature-num{
+  font-family:'Cinzel',serif;font-size:4rem;font-weight:900;
+  color:var(--gold);opacity:.15;line-height:1;margin-bottom:16px;
+}
+.feature-title{
+  font-family:'Cinzel',serif;font-size:1.1rem;font-weight:700;
+  color:var(--gold);margin-bottom:12px;text-transform:uppercase;letter-spacing:.05em;
+}
+.feature-desc{font-size:.9rem;color:rgba(245,240,232,.5);line-height:1.7}
+.feature-item::after{
+  content:'';position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+  transform:scaleX(0);transition:transform .4s;transform-origin:center;
+}
+.feature-item:hover::after{transform:scaleX(1)}
+
+/* GAMEPLAY MOCKUP */
+.gameplay-mockup{
+  max-width:1100px;margin:0 auto;
+  border:1px solid var(--glass-border);
+  background:rgba(5,10,5,0.8);
+  padding:3px;position:relative;overflow:hidden;
+}
+.mockup-inner{
+  background:linear-gradient(135deg,#0a1a0a,#071407,#0a0a05);
+  padding:40px;min-height:300px;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.mockup-hud{
+  position:absolute;top:0;left:0;right:0;
+  display:flex;justify-content:space-between;align-items:flex-start;padding:16px;
+}
+.hud-bar{display:flex;flex-direction:column;gap:6px;width:200px}
+.hud-bar-label{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;font-family:'Oswald',sans-serif}
+.hud-bar-track{height:8px;background:rgba(255,255,255,.1);border-radius:4px;overflow:hidden}
+.hud-bar-fill{height:100%;border-radius:4px}
+.hud-sawit .hud-bar-label{color:#5dcc30}
+.hud-sawit .hud-bar-fill{background:linear-gradient(to right,#2a8a10,#5dcc30);width:92%}
+.hud-solo .hud-bar-fill{background:linear-gradient(to right,var(--gold-dark),var(--gold));width:85%}
+.hud-solo{text-align:right}
+.hud-solo .hud-bar-label{color:var(--gold)}
+.hud-vs{
+  font-family:'Cinzel',serif;font-size:2rem;font-weight:900;color:var(--red);
+  text-shadow:0 0 20px rgba(192,57,43,0.7);
+  animation:vsPulse 2s infinite;
+}
+@keyframes vsPulse{0%,100%{text-shadow:0 0 20px rgba(192,57,43,0.7)}50%{text-shadow:0 0 40px rgba(231,76,60,1),0 0 80px rgba(192,57,43,0.5)}}
+.mockup-arena{
+  display:flex;align-items:flex-end;justify-content:space-between;
+  width:100%;height:220px;position:relative;margin-top:40px;
+}
+.arena-fighter{width:90px;height:auto;opacity:.9}
+.arena-ground{
+  position:absolute;bottom:0;left:0;right:0;height:2px;
+  background:linear-gradient(to right,transparent,var(--gold),transparent);
+}
+.arena-effects{
+  position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;
+}
+.clash-ring{
+  width:120px;height:120px;border-radius:50%;
+  border:2px solid rgba(201,168,76,0.3);
+  animation:clashPulse 2s infinite;
+}
+.clash-ring:nth-child(2){animation-delay:.5s;border-color:rgba(192,57,43,0.2)}
+@keyframes clashPulse{0%{transform:scale(.5);opacity:1}100%{transform:scale(2);opacity:0}}
+
+/* VERSUS SECTION */
+#versus{
+  padding:0;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;
+}
+.vs-bg{
+  position:absolute;inset:0;
+  background:linear-gradient(to right,#030d03 0%,#050505 50%,#1a0800 100%);
+}
+.vs-left{
+  position:absolute;left:0;top:0;width:50%;height:100%;
+  background:radial-gradient(ellipse at 20% 50%,rgba(30,80,10,0.5),transparent 60%);
+  border-right:1px solid rgba(50,200,30,0.1);
+}
+.vs-right{
+  position:absolute;right:0;top:0;width:50%;height:100%;
+  background:radial-gradient(ellipse at 80% 50%,rgba(100,60,0,0.4),transparent 60%);
+}
+.vs-content{
+  position:relative;z-index:10;text-align:center;padding:80px 40px;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:40px;
+  max-width:1200px;width:100%;
+}
+.vs-fighter{padding:40px 0}
+.vs-fighter-class{
+  font-family:'Oswald',sans-serif;font-size:.65rem;letter-spacing:.4em;
+  text-transform:uppercase;opacity:.6;margin-bottom:8px;
+}
+.vs-fighter-name{
+  font-family:'Cinzel',serif;font-weight:900;line-height:.9;
+  font-size:clamp(2rem,5vw,4rem);text-transform:uppercase;
+}
+.vs-fighter.left .vs-fighter-name{
+  background:linear-gradient(135deg,#4ab020,#a8e060);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.vs-fighter.right .vs-fighter-name{
+  background:linear-gradient(135deg,var(--gold),var(--gold-light));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.vs-fighter-tag{
+  margin-top:12px;font-size:.75rem;color:var(--muted);font-style:italic;
+}
+.vs-middle{display:flex;flex-direction:column;align-items:center;gap:20px}
+.vs-emblem{
+  position:relative;width:120px;height:120px;
+  display:flex;align-items:center;justify-content:center;
+}
+.vs-emblem::before{
+  content:'';position:absolute;inset:0;border-radius:50%;
+  border:2px solid rgba(192,57,43,0.6);
+  animation:emblemPulse 2s infinite;
+}
+.vs-emblem::after{
+  content:'';position:absolute;inset:-10px;border-radius:50%;
+  border:1px solid rgba(192,57,43,0.2);
+  animation:emblemPulse 2s .5s infinite;
+}
+@keyframes emblemPulse{0%{transform:scale(1);opacity:1}100%{transform:scale(1.5);opacity:0}}
+.vs-text{
+  font-family:'Cinzel',serif;font-size:3rem;font-weight:900;
+  color:var(--red);text-shadow:0 0 40px rgba(192,57,43,0.8),0 0 80px rgba(192,57,43,0.4);
+  z-index:1;position:relative;
+}
+.vs-lightning{
+  position:absolute;inset:0;pointer-events:none;overflow:hidden;
+}
+.vs-who{
+  font-family:'Cinzel',serif;font-size:clamp(1.2rem,3vw,2rem);
+  font-weight:700;color:var(--white);text-align:center;margin-top:20px;
+  grid-column:1/-1;
+}
+.vs-enter{
+  grid-column:1/-1;margin-top:20px;
+}
+
+/* STORY SECTION */
+#story{
+  padding:120px 60px;
+  background:linear-gradient(to bottom,#050505,#0a0a05,#050505);
+}
+.story-inner{max-width:900px;margin:0 auto;text-align:center}
+.story-copy{
+  font-size:clamp(1rem,2vw,1.2rem);line-height:1.9;
+  color:rgba(245,240,232,.6);margin:40px 0;
+}
+.story-copy strong{color:var(--gold);font-style:normal}
+.story-lines{
+  display:flex;flex-direction:column;gap:0;
+  border-left:1px solid var(--glass-border);padding-left:30px;
+  text-align:left;margin:50px auto;max-width:600px;
+}
+.story-line{
+  padding:20px 0;border-bottom:1px solid rgba(255,255,255,.04);
+  font-size:.9rem;color:rgba(245,240,232,.5);position:relative;
+}
+.story-line::before{
+  content:'';position:absolute;left:-34px;top:50%;transform:translateY(-50%);
+  width:8px;height:8px;border-radius:50%;background:var(--gold);
+  box-shadow:0 0 12px var(--gold);
+}
+.story-line strong{color:var(--white);display:block;font-size:1rem;margin-bottom:4px;font-family:'Oswald',sans-serif;letter-spacing:.05em}
+
+/* LEADERBOARD */
+#leaderboard{
+  padding:120px 60px;
+  background:linear-gradient(to bottom,#050505,#0d0a00,#050505);
+}
+.lb-header{text-align:center;margin-bottom:60px}
+.lb-table{max-width:800px;margin:0 auto 40px;display:flex;flex-direction:column;gap:4px}
+.lb-row{
+  display:flex;align-items:center;gap:20px;
+  padding:20px 30px;border:1px solid var(--glass-border);
+  background:var(--glass);backdrop-filter:blur(10px);
+  transition:all .3s;position:relative;overflow:hidden;
+}
+.lb-row:hover{border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.05)}
+.lb-row:nth-child(1){border-color:rgba(201,168,76,.4);background:rgba(201,168,76,.06)}
+.lb-row:nth-child(1) .lb-rank{color:var(--gold);text-shadow:0 0 20px rgba(201,168,76,.6)}
+.lb-row::after{
+  content:'';position:absolute;left:0;top:0;bottom:0;width:3px;
+}
+.lb-row:nth-child(1)::after{background:var(--gold)}
+.lb-row:nth-child(2)::after{background:#5dcc30}
+.lb-row:nth-child(3)::after{background:var(--muted)}
+.lb-rank{
+  font-family:'Cinzel',serif;font-size:1.4rem;font-weight:900;
+  width:40px;flex-shrink:0;color:rgba(245,240,232,.3);
+}
+.lb-name{
+  flex:1;font-family:'Oswald',sans-serif;font-size:1.1rem;
+  font-weight:600;letter-spacing:.05em;
+}
+.lb-row:nth-child(1) .lb-name{color:#f0d080}
+.lb-row:nth-child(2) .lb-name{color:#7de040}
+.lb-xp{
+  font-family:'Oswald',sans-serif;font-size:.9rem;
+  color:var(--muted);letter-spacing:.1em;
+}
+.lb-badge{
+  font-size:.6rem;padding:3px 10px;letter-spacing:.15em;text-transform:uppercase;
+  font-family:'Oswald',sans-serif;
+}
+.lb-row:nth-child(1) .lb-badge{background:rgba(201,168,76,.15);color:var(--gold);border:1px solid rgba(201,168,76,.3)}
+.lb-row:nth-child(2) .lb-badge{background:rgba(93,204,48,.1);color:#5dcc30;border:1px solid rgba(93,204,48,.2)}
+.lb-row:nth-child(3) .lb-badge{background:rgba(138,130,114,.1);color:var(--muted);border:1px solid rgba(138,130,114,.2)}
+.lb-center{text-align:center}
+
+/* FINAL CTA */
+#final-cta{
+  min-height:100vh;display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;text-align:center;padding:80px 40px;
+}
+.final-bg{
+  position:absolute;inset:0;
+  background:radial-gradient(ellipse at 50% 60%,rgba(60,30,0,0.5),#050505 70%);
+}
+.final-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle,rgba(201,168,76,.08),transparent 70%);
+  animation:glowPulse 4s infinite;
+}
+@keyframes glowPulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.1)}}
+.final-content{position:relative;z-index:10}
+.final-title{
+  font-family:'Cinzel',serif;font-size:clamp(2.5rem,8vw,7rem);
+  font-weight:900;text-transform:uppercase;line-height:.9;margin-bottom:28px;
+  background:linear-gradient(135deg,var(--white),rgba(245,240,232,.6));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+.final-subtitle{
+  font-size:clamp(.9rem,2vw,1.15rem);color:rgba(245,240,232,.5);
+  max-width:600px;margin:0 auto 48px;line-height:1.7;letter-spacing:.05em;
+}
+.final-note{
+  margin-top:24px;font-size:.7rem;letter-spacing:.3em;
+  color:rgba(245,240,232,.2);text-transform:uppercase;font-family:'Oswald',sans-serif;
+}
+
+/* FOOTER */
+footer{
+  background:#030503;border-top:1px solid var(--glass-border);
+  padding:40px 60px;text-align:center;
+}
+.footer-logo{
+  font-family:'Cinzel',serif;font-size:1.4rem;font-weight:900;
+  color:var(--gold);letter-spacing:.3em;margin-bottom:12px;opacity:.6;
+}
+.footer-copy{font-size:.7rem;color:rgba(245,240,232,.2);letter-spacing:.1em}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+  nav,nav.scrolled{padding:16px 30px}
+  .nav-links{gap:20px}
+  #characters{padding:80px 30px}
+  #gameplay{padding:80px 30px}
+  #versus{min-height:auto}
+  #story{padding:80px 30px}
+  #leaderboard{padding:80px 30px}
+  footer{padding:30px}
+  .features-grid{grid-template-columns:1fr}
+}
+@media(max-width:768px){
+  nav{padding:14px 20px}
+  nav.scrolled{padding:12px 20px}
+  .nav-links{display:none}
+  .nav-cta{padding:8px 18px;font-size:.7rem}
+  #characters{padding:80px 20px}
+  .cards-container{grid-template-columns:1fr;gap:20px}
+  #gameplay{padding:80px 20px}
+  .features-grid{grid-template-columns:1fr}
+  #versus{padding:80px 0}
+  .vs-content{
+    grid-template-columns:1fr;
+    gap:20px;padding:60px 20px;
+  }
+  .vs-middle{order:-1}
+  .vs-who{grid-column:1/-1}
+  .vs-enter{grid-column:1/-1}
+  .vs-fighter.left,.vs-fighter.right{text-align:center}
+  #story{padding:80px 20px}
+  #leaderboard{padding:80px 20px}
+  .lb-row{padding:16px 20px;gap:12px}
+  .lb-badge{display:none}
+  #final-cta{padding:60px 20px}
+  footer{padding:30px 20px}
+  .char-avatar{height:140px}
+}
+</style>
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">RSVS</a>
+  <ul class="nav-links">
+    <li><a href="#hero">HOME</a></li>
+    <li><a href="#characters">CHARACTERS</a></li>
+    <li><a href="#gameplay">GAMEPLAY</a></li>
+    <li><a href="#story">STORY</a></li>
+    <li><a href="#leaderboard">LEADERBOARD</a></li>
+  </ul>
+  <a href="#final-cta" class="nav-cta">PLAY NOW</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-left"></div>
+  <div class="hero-bg-right"></div>
+  <div class="light-rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div>
+  </div>
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Palm Leaves -->
+  <div class="palm-leaf leaf-1">
+    <svg width="120" height="200" viewBox="0 0 120 200"><path d="M60 200 Q20 120 10 20 Q40 60 60 200Z"/><path d="M60 200 Q-10 100 0 0 Q30 50 60 200Z"/><path d="M60 200 Q100 120 110 20 Q80 60 60 200Z"/></svg>
+  </div>
+  <div class="palm-leaf leaf-2">
+    <svg width="90" height="160" viewBox="0 0 90 160"><path d="M45 160 Q10 90 5 10 Q30 45 45 160Z"/><path d="M45 160 Q80 90 85 10 Q60 45 45 160Z"/></svg>
+  </div>
+  <div class="palm-leaf leaf-3">
+    <svg width="100" height="180" viewBox="0 0 100 180"><path d="M50 180 Q15 100 8 15 Q35 55 50 180Z"/><path d="M50 180 Q85 100 92 15 Q65 55 50 180Z"/></svg>
+  </div>
+  <div class="palm-leaf leaf-4">
+    <svg width="120" height="200" viewBox="0 0 120 200"><path d="M60 200 Q20 120 10 20 Q40 60 60 200Z"/><path d="M60 200 Q100 120 110 20 Q80 60 60 200Z"/></svg>
+  </div>
+  <div class="palm-leaf leaf-5">
+    <svg width="80" height="150" viewBox="0 0 80 150"><path d="M40 150 Q5 80 2 5 Q25 40 40 150Z"/><path d="M40 150 Q75 80 78 5 Q55 40 40 150Z"/></svg>
+  </div>
+
+  <!-- Characters -->
+  <div class="characters-container">
+    <div class="char-sawit">
+      <svg class="char-svg" viewBox="0 0 280 520" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sawit character: plantation boss in white safari shirt, sunglasses, watch -->
+        <!-- Shadow -->
+        <ellipse cx="140" cy="510" rx="80" ry="12" fill="rgba(0,0,0,0.5)"/>
+        <!-- Legs -->
+        <rect x="95" y="340" width="38" height="130" rx="8" fill="#2a2018"/>
+        <rect x="147" y="340" width="38" height="130" rx="8" fill="#2a2018"/>
+        <!-- Shoes -->
+        <ellipse cx="114" cy="472" rx="22" ry="10" fill="#0f0a05"/>
+        <ellipse cx="166" cy="472" rx="22" ry="10" fill="#0f0a05"/>
+        <!-- Belt -->
+        <rect x="90" y="335" width="100" height="12" rx="4" fill="#3a2808"/>
+        <rect x="132" y="336" width="16" height="10" rx="2" fill="#c9a84c"/>
+        <!-- Shirt body -->
+        <rect x="82" y="195" width="116" height="152" rx="12" fill="#f0ede8"/>
+        <!-- Shirt details -->
+        <line x1="140" y1="200" x2="140" y2="340" stroke="#ddd" stroke-width="1.5"/>
+        <rect x="118" y="210" width="8" height="6" rx="2" fill="#ccc"/>
+        <rect x="118" y="228" width="8" height="6" rx="2" fill="#ccc"/>
+        <rect x="118" y="246" width="8" height="6" rx="2" fill="#ccc"/>
+        <!-- Epaulette -->
+        <rect x="78" y="195" width="20" height="8" rx="4" fill="#e0ddd8"/>
+        <rect x="182" y="195" width="20" height="8" rx="4" fill="#e0ddd8"/>
+        <!-- Left arm -->
+        <rect x="42" y="195" width="42" height="95" rx="16" fill="#f0ede8"/>
+        <!-- Right arm -->
+        <rect x="196" y="195" width="42" height="95" rx="16" fill="#f0ede8"/>
+        <!-- Left hand (pointing/fist) -->
+        <ellipse cx="63" cy="295" rx="18" ry="14" fill="#c8956c"/>
+        <!-- Right hand with watch -->
+        <ellipse cx="217" cy="295" rx="18" ry="14" fill="#c8956c"/>
+        <!-- Watch -->
+        <rect x="207" y="283" width="20" height="13" rx="4" fill="#c9a84c"/>
+        <rect x="210" y="286" width="14" height="7" rx="2" fill="#111"/>
+        <!-- Neck -->
+        <rect x="122" y="165" width="36" height="36" rx="10" fill="#c8956c"/>
+        <!-- Head -->
+        <ellipse cx="140" cy="130" rx="58" ry="64" fill="#c8956c"/>
+        <!-- Hair -->
+        <ellipse cx="140" cy="80" rx="56" ry="36" fill="#2a1a0a"/>
+        <rect x="84" y="60" width="112" height="30" rx="14" fill="#2a1a0a"/>
+        <!-- Ear left -->
+        <ellipse cx="83" cy="132" rx="10" ry="14" fill="#b87850"/>
+        <!-- Ear right -->
+        <ellipse cx="197" cy="132" rx="10" ry="14" fill="#b87850"/>
+        <!-- Sunglasses -->
+        <rect x="98" y="118" width="40" height="22" rx="8" fill="#111" opacity=".9"/>
+        <rect x="142" y="118" width="40" height="22" rx="8" fill="#111" opacity=".9"/>
+        <rect x="136" y="124" width="8" height="10" rx="2" fill="#333" opacity=".9"/>
+        <rect x="84" y="122" width="16" height="6" rx="3" fill="#555"/>
+        <rect x="180" y="122" width="16" height="6" rx="3" fill="#555"/>
+        <!-- Mouth smirk -->
+        <path d="M122 158 Q140 168 158 158" stroke="#9a6040" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Money bag hint -->
+        <ellipse cx="63" cy="300" rx="12" ry="16" fill="#c9a84c" opacity=".6"/>
+        <text x="60" y="303" font-size="10" fill="#050505" font-weight="bold">$</text>
+        <!-- Green glow around feet -->
+        <ellipse cx="140" cy="490" rx="100" ry="20" fill="rgba(50,200,20,0.06)"/>
+      </svg>
+    </div>
+    <div class="char-solo">
+      <svg class="char-svg" viewBox="0 0 280 520" xmlns="http://www.w3.org/2000/svg">
+        <!-- Solo character: elegant Java sovereign in formal wear -->
+        <ellipse cx="140" cy="510" rx="80" ry="12" fill="rgba(0,0,0,0.5)"/>
+        <!-- Legs -->
+        <rect x="95" y="340" width="38" height="130" rx="8" fill="#1a1228"/>
+        <rect x="147" y="340" width="38" height="130" rx="8" fill="#1a1228"/>
+        <!-- Shoes -->
+        <ellipse cx="114" cy="472" rx="22" ry="10" fill="#05050a"/>
+        <ellipse cx="166" cy="472" rx="22" ry="10" fill="#05050a"/>
+        <!-- Belt -->
+        <rect x="90" y="335" width="100" height="12" rx="4" fill="#4a3800"/>
+        <rect x="132" y="336" width="16" height="10" rx="2" fill="#c9a84c"/>
+        <!-- Batik jacket -->
+        <rect x="82" y="195" width="116" height="152" rx="12" fill="#1a0f2e"/>
+        <!-- Batik pattern -->
+        <path d="M90 210 Q100 220 110 210 Q120 200 130 210" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <path d="M110 230 Q120 240 130 230 Q140 220 150 230" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <path d="M130 250 Q140 260 150 250 Q160 240 170 250" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <path d="M90 270 Q100 280 110 270 Q120 260 130 270" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <path d="M150 270 Q160 280 170 270 Q180 260 190 270" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <!-- Jacket lapels -->
+        <path d="M140 200 L115 240 L130 340" stroke="#2a1848" stroke-width="12" fill="none"/>
+        <path d="M140 200 L165 240 L150 340" stroke="#2a1848" stroke-width="12" fill="none"/>
+        <!-- Shirt collar white -->
+        <path d="M120 200 L140 225 L160 200" fill="white" opacity=".9"/>
+        <!-- Gold trim on jacket -->
+        <path d="M82 200 Q86 320 90 340" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+        <path d="M198 200 Q194 320 190 340" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+        <!-- Arms -->
+        <rect x="42" y="195" width="42" height="100" rx="14" fill="#1a0f2e"/>
+        <rect x="196" y="195" width="42" height="100" rx="14" fill="#1a0f2e"/>
+        <!-- Hands -->
+        <ellipse cx="63" cy="298" rx="18" ry="14" fill="#b87850"/>
+        <ellipse cx="217" cy="298" rx="18" ry="14" fill="#b87850"/>
+        <!-- Keris/sword hint in left hand -->
+        <rect x="52" y="285" width="4" height="40" rx="2" fill="#c9a84c"/>
+        <path d="M52 285 L54 275 L56 285Z" fill="#c9a84c"/>
+        <!-- Neck -->
+        <rect x="122" y="165" width="36" height="36" rx="10" fill="#b87850"/>
+        <!-- Head -->
+        <ellipse cx="140" cy="128" rx="56" ry="62" fill="#b87850"/>
+        <!-- Blangkon (Javanese traditional hat) -->
+        <ellipse cx="140" cy="82" rx="54" ry="26" fill="#1a0f2e"/>
+        <rect x="88" y="68" width="104" height="24" rx="4" fill="#1a0f2e"/>
+        <path d="M88 68 Q140 50 192 68" fill="#2a1848"/>
+        <!-- Hat gold trim -->
+        <path d="M90 92 Q140 84 190 92" stroke="#c9a84c" stroke-width="2" fill="none"/>
+        <!-- Blangkon knot on right -->
+        <ellipse cx="186" cy="82" rx="14" ry="18" fill="#2a1848"/>
+        <path d="M190 75 Q200 68 196 82 Q200 96 190 90" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".6"/>
+        <!-- Ear left -->
+        <ellipse cx="85" cy="130" rx="10" ry="14" fill="#a06840"/>
+        <!-- Ear right -->
+        <ellipse cx="195" cy="130" rx="10" ry="14" fill="#a06840"/>
+        <!-- Eyes — sharp, determined -->
+        <ellipse cx="118" cy="122" rx="12" ry="9" fill="#f5f0e8"/>
+        <ellipse cx="162" cy="122" rx="12" ry="9" fill="#f5f0e8"/>
+        <ellipse cx="120" cy="122" rx="7" ry="7" fill="#1a0a05"/>
+        <ellipse cx="164" cy="122" rx="7" ry="7" fill="#1a0a05"/>
+        <ellipse cx="122" cy="120" rx="2.5" ry="2.5" fill="white"/>
+        <ellipse cx="166" cy="120" rx="2.5" ry="2.5" fill="white"/>
+        <!-- Eyebrows thick & serious -->
+        <path d="M105 110 Q118 105 130 108" stroke="#2a1005" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <path d="M150 108 Q162 105 175 110" stroke="#2a1005" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <!-- Nose -->
+        <path d="M134 130 Q140 138 146 130" stroke="#9a6040" stroke-width="2" fill="none"/>
+        <!-- Mouth — serious slight smirk -->
+        <path d="M122 152 Q140 160 158 152" stroke="#905030" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Gold glow -->
+        <ellipse cx="140" cy="490" rx="100" ry="20" fill="rgba(201,168,76,0.07)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="hero-content">
+    <p class="hero-eyebrow">⚔ &nbsp; FICTIONAL GAME &nbsp; — &nbsp; PARODY EDITION &nbsp; ⚔</p>
+    <h1 class="hero-title">
+      <span class="sawit-name">RAJA SAWIT</span>
+      <span class="versus">versus</span>
+      <span class="solo-name">RAJA SOLO</span>
+    </h1>
+    <p class="hero-tagline">"Dua Raja. Satu Tahta. Siapa yang Menguasai Negeri?"</p>
+    <div class="hero-ctas">
+      <a href="#final-cta" class="btn-primary">⚔️ MAIN SEKARANG</a>
+      <a href="#characters" class="btn-secondary">🎮 LIHAT KARAKTER</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- CHARACTERS SECTION -->
+<section id="characters">
+  <div class="characters-header reveal">
+    <p class="section-label">Select Fighter</p>
+    <h2 class="section-title gold">CHOOSE YOUR KING</h2>
+  </div>
+  <div class="cards-container">
+    <!-- Sawit Card -->
+    <div class="char-card sawit-card reveal" id="sawitCard">
+      <div class="char-card-number">01</div>
+      <div class="char-avatar">
+        <svg viewBox="0 0 200 170" width="160" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="158" rx="60" ry="10" fill="rgba(0,0,0,0.5)"/>
+          <rect x="65" y="115" width="28" height="44" rx="6" fill="#2a2018"/>
+          <rect x="107" y="115" width="28" height="44" rx="6" fill="#2a2018"/>
+          <rect x="58" y="62" width="84" height="58" rx="10" fill="#f0ede8"/>
+          <rect x="30" y="64" width="32" height="50" rx="12" fill="#f0ede8"/>
+          <rect x="138" y="64" width="32" height="50" rx="12" fill="#f0ede8"/>
+          <ellipse cx="46" cy="116" rx="14" ry="12" fill="#c8956c"/>
+          <ellipse cx="154" cy="116" rx="14" ry="12" fill="#c8956c"/>
+          <rect x="150" y="108" width="16" height="10" rx="3" fill="#c9a84c"/>
+          <rect x="152" y="110" width="12" height="6" rx="1" fill="#111"/>
+          <rect x="82" y="48" width="36" height="20" rx="8" fill="#c8956c"/>
+          <ellipse cx="100" cy="32" rx="44" ry="46" fill="#c8956c"/>
+          <rect x="57" y="0" width="86" height="28" rx="14" fill="#2a1a0a"/>
+          <rect x="72" y="34" width="28" height="16" rx="6" fill="#111" opacity=".9"/>
+          <rect x="100" y="34" width="28" height="16" rx="6" fill="#111" opacity=".9"/>
+          <path d="M84 56 Q100 63 116 56" stroke="#9a6040" stroke-width="2" fill="none"/>
+          <ellipse cx="46" cy="116" rx="10" ry="14" fill="#c9a84c" opacity=".5"/>
+          <text x="42" y="119" font-size="9" fill="#050505" font-weight="bold">$</text>
+        </svg>
+      </div>
+      <p class="char-card-class">THE PLANTATION TYCOON</p>
+      <h3 class="char-card-name">RAJA SAWIT</h3>
+      <div class="stats">
+        <div class="stat-row">
+          <span class="stat-label">POWER</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">MONEY</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">INFLUENCE</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">MOBILITY</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:55%"></div></div>
+        </div>
+      </div>
+      <div class="char-ability">
+        <p class="ability-label">Special Ability</p>
+        <p class="ability-name">⚡ SAWIT SUPREMACY</p>
+        <p class="ability-desc">"Uang, lahan, dan jaringan. Tidak ada yang gratis di kerajaan ini."</p>
+      </div>
+    </div>
+
+    <!-- Solo Card -->
+    <div class="char-card solo-card reveal" id="soloCard">
+      <div class="char-card-number">02</div>
+      <div class="char-avatar">
+        <svg viewBox="0 0 200 170" width="160" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="158" rx="60" ry="10" fill="rgba(0,0,0,0.5)"/>
+          <rect x="65" y="115" width="28" height="44" rx="6" fill="#1a1228"/>
+          <rect x="107" y="115" width="28" height="44" rx="6" fill="#1a1228"/>
+          <rect x="58" y="62" width="84" height="58" rx="10" fill="#1a0f2e"/>
+          <path d="M58 70 Q62 110 66 120" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+          <path d="M142 70 Q138 110 134 120" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+          <rect x="30" y="64" width="32" height="50" rx="12" fill="#1a0f2e"/>
+          <rect x="138" y="64" width="32" height="50" rx="12" fill="#1a0f2e"/>
+          <ellipse cx="46" cy="116" rx="14" ry="12" fill="#b87850"/>
+          <ellipse cx="154" cy="116" rx="14" ry="12" fill="#b87850"/>
+          <rect x="38" y="105" width="4" height="28" rx="2" fill="#c9a84c"/>
+          <path d="M38 105 L40 97 L42 105Z" fill="#c9a84c"/>
+          <rect x="82" y="48" width="36" height="20" rx="8" fill="#b87850"/>
+          <ellipse cx="100" cy="30" rx="42" ry="44" fill="#b87850"/>
+          <ellipse cx="100" cy="10" rx="40" ry="20" fill="#1a0f2e"/>
+          <rect x="62" y="2" width="76" height="20" rx="4" fill="#1a0f2e"/>
+          <path d="M62 22 Q100 14 138 22" fill="#2a1848"/>
+          <path d="M64 26 Q100 20 136 26" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+          <ellipse cx="132" cy="14" rx="10" ry="14" fill="#2a1848"/>
+          <ellipse cx="72" cy="28" rx="8" ry="10" fill="#9a6840"/>
+          <ellipse cx="128" cy="28" rx="8" ry="10" fill="#9a6840"/>
+          <ellipse cx="82" cy="30" rx="10" ry="8" fill="#f5f0e8"/>
+          <ellipse cx="118" cy="30" rx="10" ry="8" fill="#f5f0e8"/>
+          <ellipse cx="84" cy="30" rx="6" ry="6" fill="#1a0a05"/>
+          <ellipse cx="120" cy="30" rx="6" ry="6" fill="#1a0a05"/>
+          <path d="M84 56 Q100 63 116 56" stroke="#905030" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <p class="char-card-class">THE JAVA SOVEREIGN</p>
+      <h3 class="char-card-name">RAJA SOLO</h3>
+      <div class="stats">
+        <div class="stat-row">
+          <span class="stat-label">POWER</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">CHARISMA</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">STRATEGY</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">SPEED</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:70%"></div></div>
+        </div>
+      </div>
+      <div class="char-ability">
+        <p class="ability-label">Special Ability</p>
+        <p class="ability-name">🔱 SOLO DOMINANCE</p>
+        <p class="ability-desc">"Tenang di luar. Mematikan di arena."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMEPLAY SECTION -->
+<section id="gameplay">
+  <div class="gameplay-header reveal">
+    <p class="section-label">How to Play</p>
+    <h2 class="section-title gold">RULE THE ARENA</h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-item reveal">
+      <div class="feature-num">01</div>
+      <h3 class="feature-title">BUILD YOUR KINGDOM</h3>
+      <p class="feature-desc">Bangun kekuatan, kumpulkan resource, dan kuasai wilayah. Setiap keputusan membentuk kerajaanmu.</p>
+    </div>
+    <div class="feature-item reveal">
+      <div class="feature-num">02</div>
+      <h3 class="feature-title">DESTROY YOUR RIVAL</h3>
+      <p class="feature-desc">Gunakan strategi, ability, dan special attack untuk menjatuhkan lawan. Tidak ada ampun di arena.</p>
+    </div>
+    <div class="feature-item reveal">
+      <div class="feature-num">03</div>
+      <h3 class="feature-title">BECOME THE KING</h3>
+      <p class="feature-desc">Naikkan ranking dan rebut posisi nomor satu di leaderboard. Hanya satu yang bisa bertakhta.</p>
+    </div>
+  </div>
+
+  <!-- Gameplay Mockup -->
+  <div class="gameplay-mockup reveal">
+    <div class="mockup-inner">
+      <div class="mockup-hud">
+        <div class="hud-bar hud-sawit">
+          <span class="hud-bar-label">RAJA SAWIT</span>
+          <div class="hud-bar-track"><div class="hud-bar-fill"></div></div>
+          <span class="hud-bar-label" style="font-size:.5rem;opacity:.5">HP: 9,200 / 10,000</span>
+        </div>
+        <div class="hud-vs">VS</div>
+        <div class="hud-bar hud-solo">
+          <span class="hud-bar-label">RAJA SOLO</span>
+          <div class="hud-bar-track"><div class="hud-bar-fill"></div></div>
+          <span class="hud-bar-label" style="font-size:.5rem;opacity:.5">HP: 8,500 / 10,000</span>
+        </div>
+      </div>
+      <div class="mockup-arena">
+        <!-- Left fighter mini -->
+        <svg class="arena-fighter" viewBox="0 0 80 160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="24" y="100" width="14" height="50" rx="5" fill="#2a2018"/>
+          <rect x="42" y="100" width="14" height="50" rx="5" fill="#2a2018"/>
+          <rect x="18" y="55" width="44" height="50" rx="8" fill="#f0ede8"/>
+          <rect x="6" y="57" width="16" height="42" rx="8" fill="#f0ede8"/>
+          <rect x="58" y="57" width="16" height="42" rx="8" fill="#f0ede8"/>
+          <ellipse cx="14" cy="100" rx="9" ry="8" fill="#c8956c"/>
+          <ellipse cx="66" cy="100" rx="9" ry="8" fill="#c8956c"/>
+          <ellipse cx="40" cy="40" rx="26" ry="28" fill="#c8956c"/>
+          <rect x="15" y="15" width="50" height="18" rx="9" fill="#2a1a0a"/>
+          <rect x="22" y="34" width="16" height="10" rx="4" fill="#111" opacity=".9"/>
+          <rect x="42" y="34" width="16" height="10" rx="4" fill="#111" opacity=".9"/>
+        </svg>
+        <!-- Center effects -->
+        <div class="arena-effects">
+          <div class="clash-ring"></div>
+          <div class="clash-ring"></div>
+        </div>
+        <!-- Right fighter mini -->
+        <svg class="arena-fighter" style="transform:scaleX(-1)" viewBox="0 0 80 160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="24" y="100" width="14" height="50" rx="5" fill="#1a1228"/>
+          <rect x="42" y="100" width="14" height="50" rx="5" fill="#1a1228"/>
+          <rect x="18" y="55" width="44" height="50" rx="8" fill="#1a0f2e"/>
+          <rect x="6" y="57" width="16" height="42" rx="8" fill="#1a0f2e"/>
+          <rect x="58" y="57" width="16" height="42" rx="8" fill="#1a0f2e"/>
+          <ellipse cx="14" cy="100" rx="9" ry="8" fill="#b87850"/>
+          <ellipse cx="66" cy="100" rx="9" ry="8" fill="#b87850"/>
+          <ellipse cx="40" cy="40" rx="26" ry="28" fill="#b87850"/>
+          <ellipse cx="40" cy="18" rx="24" ry="16" fill="#1a0f2e"/>
+          <rect x="16" y="8" width="48" height="16" rx="4" fill="#1a0f2e"/>
+          <path d="M16 24 Q40 18 64 24" fill="#2a1848"/>
+          <ellipse cx="28" cy="36" rx="8" ry="6" fill="#f5f0e8"/>
+          <ellipse cx="52" cy="36" rx="8" ry="6" fill="#f5f0e8"/>
+        </svg>
+        <div class="arena-ground"></div>
+      </div>
+      <!-- Round indicator -->
+      <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-family:'Cinzel',serif;font-size:.7rem;color:var(--gold);letter-spacing:.3em;opacity:.5">ROUND 1 · FIGHT</div>
+    </div>
+  </div>
+</section>
+
+<!-- VERSUS SECTION -->
+<section id="versus">
+  <div class="vs-bg"></div>
+  <div class="vs-left"></div>
+  <div class="vs-right"></div>
+  <canvas id="vs-lightning" style="position:absolute;inset:0;pointer-events:none;"></canvas>
+  <div class="vs-content">
+    <div class="vs-fighter left reveal">
+      <p class="vs-fighter-class">PLANTATION TYCOON</p>
+      <h2 class="vs-fighter-name">RAJA<br>SAWIT</h2>
+      <p class="vs-fighter-tag">"Lahan adalah segalanya."</p>
+    </div>
+    <div class="vs-middle reveal">
+      <div class="vs-emblem">
+        <span class="vs-text">VS</span>
+      </div>
+    </div>
+    <div class="vs-fighter right reveal">
+      <p class="vs-fighter-class">JAVA SOVEREIGN</p>
+      <h2 class="vs-fighter-name">RAJA<br>SOLO</h2>
+      <p class="vs-fighter-tag">"Strategi mengalahkan segalanya."</p>
+    </div>
+    <h3 class="vs-who reveal">WHO WILL RULE?</h3>
+    <div class="vs-enter reveal">
+      <a href="#final-cta" class="btn-primary">⚔ ENTER THE BATTLE</a>
+    </div>
+  </div>
+</section>
+
+<!-- STORY SECTION -->
+<section id="story">
+  <div class="story-inner">
+    <div class="reveal">
+      <p class="section-label">Lore</p>
+      <h2 class="section-title gold">THE WAR FOR<br>THE THRONE</h2>
+    </div>
+    <div class="story-copy reveal">
+      <p>Ketika dua kerajaan bertemu, tidak ada ruang untuk kompromi.</p>
+      <br>
+      <p>Di satu sisi, <strong>kekuatan ekonomi dan perkebunan</strong>.<br>
+      Di sisi lain, <strong>strategi, budaya, dan pengaruh</strong>.</p>
+      <br>
+      <p>Satu arena.<br>Dua raja.<br>Satu tahta.</p>
+    </div>
+    <div class="story-lines reveal">
+      <div class="story-line">
+        <strong>BABAK I — Awal Mula</strong>
+        Dua kekuatan tumbuh dari bumi yang sama, namun memilih jalan berbeda.
+      </div>
+      <div class="story-line">
+        <strong>BABAK II — Benturan Pertama</strong>
+        Lahan bertemu kuasa. Uang berhadapan dengan pengaruh. Arena mulai memanas.
+      </div>
+      <div class="story-line">
+        <strong>BABAK III — Perang Terbuka</strong>
+        Tidak ada lagi diplomasi. Hanya satu yang bisa bertahan di atas tahta.
+      </div>
+      <div class="story-line">
+        <strong>BABAK IV — Penentu</strong>
+        Rakyat memilih. Arena memutuskan. Raja sejati akan berdiri.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard">
+  <div class="lb-header reveal">
+    <p class="section-label">Rankings</p>
+    <h2 class="section-title gold">KINGDOM LEADERBOARD</h2>
+  </div>
+  <div class="lb-table">
+    <div class="lb-row reveal">
+      <span class="lb-rank">#1</span>
+      <span class="lb-name">RAJA SAWIT</span>
+      <span class="lb-xp">98,420 XP</span>
+      <span class="lb-badge">CHAMPION</span>
+    </div>
+    <div class="lb-row reveal">
+      <span class="lb-rank">#2</span>
+      <span class="lb-name">RAJA SOLO</span>
+      <span class="lb-xp">96,850 XP</span>
+      <span class="lb-badge">CONTENDER</span>
+    </div>
+    <div class="lb-row reveal">
+      <span class="lb-rank">#3</span>
+      <span class="lb-name">THE UNKNOWN KING</span>
+      <span class="lb-xp">87,320 XP</span>
+      <span class="lb-badge">RISING</span>
+    </div>
+  </div>
+  <div class="lb-center reveal">
+    <a href="#" class="btn-secondary">VIEW FULL RANKING</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <div class="final-bg"></div>
+  <div class="final-glow"></div>
+  <div class="final-content">
+    <h2 class="final-title reveal">THE THRONE<br>IS WAITING.</h2>
+    <p class="final-subtitle reveal">"Pilih rajamu. Bangun kerajaanmu. Taklukkan lawanmu."</p>
+    <div class="reveal">
+      <a href="#hero" class="btn-primary" style="font-size:1.1rem;padding:20px 52px">
+        ⚔️ PLAY RAJA SAWIT vs RAJA SOLO
+      </a>
+    </div>
+    <p class="final-note reveal">No kingdom is safe.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">RSVS</p>
+  <p class="footer-copy">RAJA SAWIT vs RAJA SOLO &copy; 2025 — FICTIONAL PARODY GAME — ALL CHARACTERS ARE FICTITIOUS</p>
+  <p class="footer-copy" style="margin-top:6px;opacity:.5">NOT AFFILIATED WITH ANY REAL PERSON, POLITICAL PARTY, OR ORGANIZATION</p>
+</footer>
+
+<script>
+// Cursor
+const cursor = document.getElementById('cursor');
+const cursorRing = document.getElementById('cursor-ring');
+let mouseX=0,mouseY=0,ringX=0,ringY=0;
+document.addEventListener('mousemove',e=>{
+  mouseX=e.clientX; mouseY=e.clientY;
+  cursor.style.left=mouseX+'px';cursor.style.top=mouseY+'px';
+});
+function animRing(){
+  ringX+=(mouseX-ringX)*.15;
+  ringY+=(mouseY-ringY)*.15;
+  cursorRing.style.left=ringX+'px';cursorRing.style.top=ringY+'px';
+  requestAnimationFrame(animRing);
+}
+animRing();
+document.querySelectorAll('a,button,.char-card,.lb-row').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cursor.classList.add('hover');cursorRing.classList.add('hover')});
+  el.addEventListener('mouseleave',()=>{cursor.classList.remove('hover');cursorRing.classList.remove('hover')});
+});
+
+// Navbar scroll
+const nav=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>60);
+});
+
+// Particles
+const canvas=document.getElementById('particles-canvas');
+const ctx=canvas.getContext('2d');
+function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight}
+resizeCanvas();
+window.addEventListener('resize',resizeCanvas);
+const particles=[];
+for(let i=0;i<80;i++){
+  particles.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    r:Math.random()*1.5+.3,
+    vx:(Math.random()-.5)*.3,
+    vy:-Math.random()*.5-.1,
+    alpha:Math.random()*.4+.1,
+    color:Math.random()>.5?'201,168,76':'93,204,48'
+  });
+}
+function animParticles(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  particles.forEach(p=>{
+    p.x+=p.vx; p.y+=p.vy;
+    if(p.y<-10)p.y=canvas.height+10;
+    if(p.x<-10)p.x=canvas.width+10;
+    if(p.x>canvas.width+10)p.x=-10;
+    ctx.beginPath();
+    ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+    ctx.fillStyle=`rgba(${p.color},${p.alpha})`;
+    ctx.fill();
+  });
+  requestAnimationFrame(animParticles);
+}
+animParticles();
+
+// VS Lightning Canvas
+const vsCanvas=document.getElementById('vs-lightning');
+if(vsCanvas){
+  const vsCtx=vsCanvas.getContext('2d');
+  function resizeVsCanvas(){vsCanvas.width=vsCanvas.offsetWidth;vsCanvas.height=vsCanvas.offsetHeight}
+  resizeVsCanvas();
+  window.addEventListener('resize',resizeVsCanvas);
+  function drawLightning(ctx,x1,y1,x2,y2,roughness,maxOffset){
+    const dx=x2-x1,dy=y2-y1;
+    const dist=Math.sqrt(dx*dx+dy*dy);
+    if(dist<5){
+      ctx.moveTo(x1,y1);ctx.lineTo(x2,y2);return;
+    }
+    const mx=(x1+x2)/2,my=(y1+y2)/2;
+    const off=(Math.random()-.5)*roughness;
+    const nx=-dy/dist,ny=dx/dist;
+    drawLightning(ctx,x1,y1,mx+nx*off,my+ny*off,roughness*.6,maxOffset);
+    drawLightning(ctx,mx+nx*off,my+ny*off,x2,y2,roughness*.6,maxOffset);
+  }
+  function renderLightning(){
+    vsCtx.clearRect(0,0,vsCanvas.width,vsCanvas.height);
+    if(Math.random()<.3){
+      const cx=vsCanvas.width/2,cy=vsCanvas.height/2;
+      vsCtx.beginPath();
+      vsCtx.strokeStyle='rgba(192,57,43,0.4)';
+      vsCtx.lineWidth=1.5;
+      drawLightning(vsCtx,cx-60,cy,cx+60,cy,40,30);
+      vsCtx.stroke();
+      vsCtx.beginPath();
+      vsCtx.strokeStyle='rgba(201,168,76,0.3)';
+      vsCtx.lineWidth=1;
+      drawLightning(vsCtx,cx,cy-50,cx,cy+50,30,20);
+      vsCtx.stroke();
+    }
+    requestAnimationFrame(renderLightning);
+  }
+  renderLightning();
+}
+
+// Scroll reveal
+const reveals=document.querySelectorAll('.reveal');
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach((e,i)=>{
+    if(e.isIntersecting){
+      setTimeout(()=>e.target.classList.add('visible'),i*80);
+    }
+  });
+},{threshold:.12});
+reveals.forEach(r=>observer.observe(r));
+
+// Card tilt effect
+document.querySelectorAll('.char-card').forEach(card=>{
+  card.addEventListener('mousemove',e=>{
+    const rect=card.getBoundingClientRect();
+    const x=(e.clientX-rect.left)/rect.width-.5;
+    const y=(e.clientY-rect.top)/rect.height-.5;
+    card.style.transform=`translateY(-8px) scale(1.02) rotateY(${x*8}deg) rotateX(${-y*6}deg)`;
+  });
+  card.addEventListener('mouseleave',()=>{
+    card.style.transform='';
+    card.style.transition='transform .4s cubic-bezier(.25,.46,.45,.94)';
+  });
+});
+
+// Mouse follow glow on hero
+const hero=document.getElementById('hero');
+if(hero){
+  hero.addEventListener('mousemove',e=>{
+    const rect=hero.getBoundingClientRect();
+    const x=e.clientX-rect.left,y=e.clientY-rect.top;
+    hero.style.setProperty('--mx',x+'px');
+    hero.style.setProperty('--my',y+'px');
+  });
+}
+
+// Parallax on scroll
+window.addEventListener('scroll',()=>{
+  const sy=window.scrollY;
+  const heroContent=document.querySelector('.hero-content');
+  const chars=document.querySelector('.characters-container');
+  if(heroContent)heroContent.style.transform=`translateY(${sy*.3}px)`;
+  if(chars)chars.style.transform=`translateY(${sy*.15}px)`;
+});
+
+// Smooth stat bar animation
+const statObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      e.target.querySelectorAll('.stat-fill').forEach(fill=>{
+        const w=fill.style.width;
+        fill.style.width='0';
+        setTimeout(()=>{fill.style.width=w;},100);
+      });
+      statObs.unobserve(e.target);
+    }
+  });
+},{threshold:.3});
+document.querySelectorAll('.char-card').forEach(c=>statObs.observe(c));
+</script>
+</body>
+</html>
