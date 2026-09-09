@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RAJA SAWIT vs RAJA SOLO — Dua Raja. Satu Tahta.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Inter:wght@300;400;500;600;700&family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CURSOR -->
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">RSVS</a>
+  <ul class="nav-links">
+    <li><a href="#hero">HOME</a></li>
+    <li><a href="#characters">CHARACTERS</a></li>
+    <li><a href="#gameplay">GAMEPLAY</a></li>
+    <li><a href="#story">STORY</a></li>
+    <li><a href="#leaderboard">LEADERBOARD</a></li>
+  </ul>
+  <a href="#final-cta" class="nav-cta">PLAY NOW</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-bg-left"></div>
+  <div class="hero-bg-right"></div>
+  <div class="light-rays">
+    <div class="ray"></div><div class="ray"></div><div class="ray"></div>
+    <div class="ray"></div><div class="ray"></div>
+  </div>
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Palm Leaves -->
+  <div class="palm-leaf leaf-1">
+    <svg width="120" height="200" viewBox="0 0 120 200"><path d="M60 200 Q20 120 10 20 Q40 60 60 200Z"/><path d="M60 200 Q-10 100 0 0 Q30 50 60 200Z"/><path d="M60 200 Q100 120 110 20 Q80 60 60 200Z"/></svg>
+  </div>
+  <div class="palm-leaf leaf-2">
+    <svg width="90" height="160" viewBox="0 0 90 160"><path d="M45 160 Q10 90 5 10 Q30 45 45 160Z"/><path d="M45 160 Q80 90 85 10 Q60 45 45 160Z"/></svg>
+  </div>
+  <div class="palm-leaf leaf-3">
+    <svg width="100" height="180" viewBox="0 0 100 180"><path d="M50 180 Q15 100 8 15 Q35 55 50 180Z"/><path d="M50 180 Q85 100 92 15 Q65 55 50 180Z"/></svg>
+  </div>
+  <div class="palm-leaf leaf-4">
+    <svg width="120" height="200" viewBox="0 0 120 200"><path d="M60 200 Q20 120 10 20 Q40 60 60 200Z"/><path d="M60 200 Q100 120 110 20 Q80 60 60 200Z"/></svg>
+  </div>
+  <div class="palm-leaf leaf-5">
+    <svg width="80" height="150" viewBox="0 0 80 150"><path d="M40 150 Q5 80 2 5 Q25 40 40 150Z"/><path d="M40 150 Q75 80 78 5 Q55 40 40 150Z"/></svg>
+  </div>
+
+  <!-- Characters -->
+  <div class="characters-container">
+    <div class="char-sawit">
+      <svg class="char-svg" viewBox="0 0 280 520" xmlns="http://www.w3.org/2000/svg">
+        <!-- Sawit character: plantation boss in white safari shirt, sunglasses, watch -->
+        <!-- Shadow -->
+        <ellipse cx="140" cy="510" rx="80" ry="12" fill="rgba(0,0,0,0.5)"/>
+        <!-- Legs -->
+        <rect x="95" y="340" width="38" height="130" rx="8" fill="#2a2018"/>
+        <rect x="147" y="340" width="38" height="130" rx="8" fill="#2a2018"/>
+        <!-- Shoes -->
+        <ellipse cx="114" cy="472" rx="22" ry="10" fill="#0f0a05"/>
+        <ellipse cx="166" cy="472" rx="22" ry="10" fill="#0f0a05"/>
+        <!-- Belt -->
+        <rect x="90" y="335" width="100" height="12" rx="4" fill="#3a2808"/>
+        <rect x="132" y="336" width="16" height="10" rx="2" fill="#c9a84c"/>
+        <!-- Shirt body -->
+        <rect x="82" y="195" width="116" height="152" rx="12" fill="#f0ede8"/>
+        <!-- Shirt details -->
+        <line x1="140" y1="200" x2="140" y2="340" stroke="#ddd" stroke-width="1.5"/>
+        <rect x="118" y="210" width="8" height="6" rx="2" fill="#ccc"/>
+        <rect x="118" y="228" width="8" height="6" rx="2" fill="#ccc"/>
+        <rect x="118" y="246" width="8" height="6" rx="2" fill="#ccc"/>
+        <!-- Epaulette -->
+        <rect x="78" y="195" width="20" height="8" rx="4" fill="#e0ddd8"/>
+        <rect x="182" y="195" width="20" height="8" rx="4" fill="#e0ddd8"/>
+        <!-- Left arm -->
+        <rect x="42" y="195" width="42" height="95" rx="16" fill="#f0ede8"/>
+        <!-- Right arm -->
+        <rect x="196" y="195" width="42" height="95" rx="16" fill="#f0ede8"/>
+        <!-- Left hand (pointing/fist) -->
+        <ellipse cx="63" cy="295" rx="18" ry="14" fill="#c8956c"/>
+        <!-- Right hand with watch -->
+        <ellipse cx="217" cy="295" rx="18" ry="14" fill="#c8956c"/>
+        <!-- Watch -->
+        <rect x="207" y="283" width="20" height="13" rx="4" fill="#c9a84c"/>
+        <rect x="210" y="286" width="14" height="7" rx="2" fill="#111"/>
+        <!-- Neck -->
+        <rect x="122" y="165" width="36" height="36" rx="10" fill="#c8956c"/>
+        <!-- Head -->
+        <ellipse cx="140" cy="130" rx="58" ry="64" fill="#c8956c"/>
+        <!-- Hair -->
+        <ellipse cx="140" cy="80" rx="56" ry="36" fill="#2a1a0a"/>
+        <rect x="84" y="60" width="112" height="30" rx="14" fill="#2a1a0a"/>
+        <!-- Ear left -->
+        <ellipse cx="83" cy="132" rx="10" ry="14" fill="#b87850"/>
+        <!-- Ear right -->
+        <ellipse cx="197" cy="132" rx="10" ry="14" fill="#b87850"/>
+        <!-- Sunglasses -->
+        <rect x="98" y="118" width="40" height="22" rx="8" fill="#111" opacity=".9"/>
+        <rect x="142" y="118" width="40" height="22" rx="8" fill="#111" opacity=".9"/>
+        <rect x="136" y="124" width="8" height="10" rx="2" fill="#333" opacity=".9"/>
+        <rect x="84" y="122" width="16" height="6" rx="3" fill="#555"/>
+        <rect x="180" y="122" width="16" height="6" rx="3" fill="#555"/>
+        <!-- Mouth smirk -->
+        <path d="M122 158 Q140 168 158 158" stroke="#9a6040" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Money bag hint -->
+        <ellipse cx="63" cy="300" rx="12" ry="16" fill="#c9a84c" opacity=".6"/>
+        <text x="60" y="303" font-size="10" fill="#050505" font-weight="bold">$</text>
+        <!-- Green glow around feet -->
+        <ellipse cx="140" cy="490" rx="100" ry="20" fill="rgba(50,200,20,0.06)"/>
+      </svg>
+    </div>
+    <div class="char-solo">
+      <svg class="char-svg" viewBox="0 0 280 520" xmlns="http://www.w3.org/2000/svg">
+        <!-- Solo character: elegant Java sovereign in formal wear -->
+        <ellipse cx="140" cy="510" rx="80" ry="12" fill="rgba(0,0,0,0.5)"/>
+        <!-- Legs -->
+        <rect x="95" y="340" width="38" height="130" rx="8" fill="#1a1228"/>
+        <rect x="147" y="340" width="38" height="130" rx="8" fill="#1a1228"/>
+        <!-- Shoes -->
+        <ellipse cx="114" cy="472" rx="22" ry="10" fill="#05050a"/>
+        <ellipse cx="166" cy="472" rx="22" ry="10" fill="#05050a"/>
+        <!-- Belt -->
+        <rect x="90" y="335" width="100" height="12" rx="4" fill="#4a3800"/>
+        <rect x="132" y="336" width="16" height="10" rx="2" fill="#c9a84c"/>
+        <!-- Batik jacket -->
+        <rect x="82" y="195" width="116" height="152" rx="12" fill="#1a0f2e"/>
+        <!-- Batik pattern -->
+        <path d="M90 210 Q100 220 110 210 Q120 200 130 210" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <path d="M110 230 Q120 240 130 230 Q140 220 150 230" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <path d="M130 250 Q140 260 150 250 Q160 240 170 250" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <path d="M90 270 Q100 280 110 270 Q120 260 130 270" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <path d="M150 270 Q160 280 170 270 Q180 260 190 270" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".4"/>
+        <!-- Jacket lapels -->
+        <path d="M140 200 L115 240 L130 340" stroke="#2a1848" stroke-width="12" fill="none"/>
+        <path d="M140 200 L165 240 L150 340" stroke="#2a1848" stroke-width="12" fill="none"/>
+        <!-- Shirt collar white -->
+        <path d="M120 200 L140 225 L160 200" fill="white" opacity=".9"/>
+        <!-- Gold trim on jacket -->
+        <path d="M82 200 Q86 320 90 340" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+        <path d="M198 200 Q194 320 190 340" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+        <!-- Arms -->
+        <rect x="42" y="195" width="42" height="100" rx="14" fill="#1a0f2e"/>
+        <rect x="196" y="195" width="42" height="100" rx="14" fill="#1a0f2e"/>
+        <!-- Hands -->
+        <ellipse cx="63" cy="298" rx="18" ry="14" fill="#b87850"/>
+        <ellipse cx="217" cy="298" rx="18" ry="14" fill="#b87850"/>
+        <!-- Keris/sword hint in left hand -->
+        <rect x="52" y="285" width="4" height="40" rx="2" fill="#c9a84c"/>
+        <path d="M52 285 L54 275 L56 285Z" fill="#c9a84c"/>
+        <!-- Neck -->
+        <rect x="122" y="165" width="36" height="36" rx="10" fill="#b87850"/>
+        <!-- Head -->
+        <ellipse cx="140" cy="128" rx="56" ry="62" fill="#b87850"/>
+        <!-- Blangkon (Javanese traditional hat) -->
+        <ellipse cx="140" cy="82" rx="54" ry="26" fill="#1a0f2e"/>
+        <rect x="88" y="68" width="104" height="24" rx="4" fill="#1a0f2e"/>
+        <path d="M88 68 Q140 50 192 68" fill="#2a1848"/>
+        <!-- Hat gold trim -->
+        <path d="M90 92 Q140 84 190 92" stroke="#c9a84c" stroke-width="2" fill="none"/>
+        <!-- Blangkon knot on right -->
+        <ellipse cx="186" cy="82" rx="14" ry="18" fill="#2a1848"/>
+        <path d="M190 75 Q200 68 196 82 Q200 96 190 90" stroke="#c9a84c" stroke-width="1" fill="none" opacity=".6"/>
+        <!-- Ear left -->
+        <ellipse cx="85" cy="130" rx="10" ry="14" fill="#a06840"/>
+        <!-- Ear right -->
+        <ellipse cx="195" cy="130" rx="10" ry="14" fill="#a06840"/>
+        <!-- Eyes — sharp, determined -->
+        <ellipse cx="118" cy="122" rx="12" ry="9" fill="#f5f0e8"/>
+        <ellipse cx="162" cy="122" rx="12" ry="9" fill="#f5f0e8"/>
+        <ellipse cx="120" cy="122" rx="7" ry="7" fill="#1a0a05"/>
+        <ellipse cx="164" cy="122" rx="7" ry="7" fill="#1a0a05"/>
+        <ellipse cx="122" cy="120" rx="2.5" ry="2.5" fill="white"/>
+        <ellipse cx="166" cy="120" rx="2.5" ry="2.5" fill="white"/>
+        <!-- Eyebrows thick & serious -->
+        <path d="M105 110 Q118 105 130 108" stroke="#2a1005" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <path d="M150 108 Q162 105 175 110" stroke="#2a1005" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+        <!-- Nose -->
+        <path d="M134 130 Q140 138 146 130" stroke="#9a6040" stroke-width="2" fill="none"/>
+        <!-- Mouth — serious slight smirk -->
+        <path d="M122 152 Q140 160 158 152" stroke="#905030" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <!-- Gold glow -->
+        <ellipse cx="140" cy="490" rx="100" ry="20" fill="rgba(201,168,76,0.07)"/>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Hero Content -->
+  <div class="hero-content">
+    <p class="hero-eyebrow">⚔ &nbsp; FICTIONAL GAME &nbsp; — &nbsp; PARODY EDITION &nbsp; ⚔</p>
+    <h1 class="hero-title">
+      <span class="sawit-name">RAJA SAWIT</span>
+      <span class="versus">versus</span>
+      <span class="solo-name">RAJA SOLO</span>
+    </h1>
+    <p class="hero-tagline">"Dua Raja. Satu Tahta. Siapa yang Menguasai Negeri?"</p>
+    <div class="hero-ctas">
+      <a href="#final-cta" class="btn-primary">⚔️ MAIN SEKARANG</a>
+      <a href="#characters" class="btn-secondary">🎮 LIHAT KARAKTER</a>
+    </div>
+  </div>
+
+  <div class="scroll-hint">
+    <span>SCROLL</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- CHARACTERS SECTION -->
+<section id="characters">
+  <div class="characters-header reveal">
+    <p class="section-label">Select Fighter</p>
+    <h2 class="section-title gold">CHOOSE YOUR KING</h2>
+  </div>
+  <div class="cards-container">
+    <!-- Sawit Card -->
+    <div class="char-card sawit-card reveal" id="sawitCard">
+      <div class="char-card-number">01</div>
+      <div class="char-avatar">
+        <svg viewBox="0 0 200 170" width="160" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="158" rx="60" ry="10" fill="rgba(0,0,0,0.5)"/>
+          <rect x="65" y="115" width="28" height="44" rx="6" fill="#2a2018"/>
+          <rect x="107" y="115" width="28" height="44" rx="6" fill="#2a2018"/>
+          <rect x="58" y="62" width="84" height="58" rx="10" fill="#f0ede8"/>
+          <rect x="30" y="64" width="32" height="50" rx="12" fill="#f0ede8"/>
+          <rect x="138" y="64" width="32" height="50" rx="12" fill="#f0ede8"/>
+          <ellipse cx="46" cy="116" rx="14" ry="12" fill="#c8956c"/>
+          <ellipse cx="154" cy="116" rx="14" ry="12" fill="#c8956c"/>
+          <rect x="150" y="108" width="16" height="10" rx="3" fill="#c9a84c"/>
+          <rect x="152" y="110" width="12" height="6" rx="1" fill="#111"/>
+          <rect x="82" y="48" width="36" height="20" rx="8" fill="#c8956c"/>
+          <ellipse cx="100" cy="32" rx="44" ry="46" fill="#c8956c"/>
+          <rect x="57" y="0" width="86" height="28" rx="14" fill="#2a1a0a"/>
+          <rect x="72" y="34" width="28" height="16" rx="6" fill="#111" opacity=".9"/>
+          <rect x="100" y="34" width="28" height="16" rx="6" fill="#111" opacity=".9"/>
+          <path d="M84 56 Q100 63 116 56" stroke="#9a6040" stroke-width="2" fill="none"/>
+          <ellipse cx="46" cy="116" rx="10" ry="14" fill="#c9a84c" opacity=".5"/>
+          <text x="42" y="119" font-size="9" fill="#050505" font-weight="bold">$</text>
+        </svg>
+      </div>
+      <p class="char-card-class">THE PLANTATION TYCOON</p>
+      <h3 class="char-card-name">RAJA SAWIT</h3>
+      <div class="stats">
+        <div class="stat-row">
+          <span class="stat-label">POWER</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:90%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">MONEY</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">INFLUENCE</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:88%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">MOBILITY</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:55%"></div></div>
+        </div>
+      </div>
+      <div class="char-ability">
+        <p class="ability-label">Special Ability</p>
+        <p class="ability-name">⚡ SAWIT SUPREMACY</p>
+        <p class="ability-desc">"Uang, lahan, dan jaringan. Tidak ada yang gratis di kerajaan ini."</p>
+      </div>
+    </div>
+
+    <!-- Solo Card -->
+    <div class="char-card solo-card reveal" id="soloCard">
+      <div class="char-card-number">02</div>
+      <div class="char-avatar">
+        <svg viewBox="0 0 200 170" width="160" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="100" cy="158" rx="60" ry="10" fill="rgba(0,0,0,0.5)"/>
+          <rect x="65" y="115" width="28" height="44" rx="6" fill="#1a1228"/>
+          <rect x="107" y="115" width="28" height="44" rx="6" fill="#1a1228"/>
+          <rect x="58" y="62" width="84" height="58" rx="10" fill="#1a0f2e"/>
+          <path d="M58 70 Q62 110 66 120" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+          <path d="M142 70 Q138 110 134 120" stroke="#c9a84c" stroke-width="1.5" fill="none" opacity=".7"/>
+          <rect x="30" y="64" width="32" height="50" rx="12" fill="#1a0f2e"/>
+          <rect x="138" y="64" width="32" height="50" rx="12" fill="#1a0f2e"/>
+          <ellipse cx="46" cy="116" rx="14" ry="12" fill="#b87850"/>
+          <ellipse cx="154" cy="116" rx="14" ry="12" fill="#b87850"/>
+          <rect x="38" y="105" width="4" height="28" rx="2" fill="#c9a84c"/>
+          <path d="M38 105 L40 97 L42 105Z" fill="#c9a84c"/>
+          <rect x="82" y="48" width="36" height="20" rx="8" fill="#b87850"/>
+          <ellipse cx="100" cy="30" rx="42" ry="44" fill="#b87850"/>
+          <ellipse cx="100" cy="10" rx="40" ry="20" fill="#1a0f2e"/>
+          <rect x="62" y="2" width="76" height="20" rx="4" fill="#1a0f2e"/>
+          <path d="M62 22 Q100 14 138 22" fill="#2a1848"/>
+          <path d="M64 26 Q100 20 136 26" stroke="#c9a84c" stroke-width="1.5" fill="none"/>
+          <ellipse cx="132" cy="14" rx="10" ry="14" fill="#2a1848"/>
+          <ellipse cx="72" cy="28" rx="8" ry="10" fill="#9a6840"/>
+          <ellipse cx="128" cy="28" rx="8" ry="10" fill="#9a6840"/>
+          <ellipse cx="82" cy="30" rx="10" ry="8" fill="#f5f0e8"/>
+          <ellipse cx="118" cy="30" rx="10" ry="8" fill="#f5f0e8"/>
+          <ellipse cx="84" cy="30" rx="6" ry="6" fill="#1a0a05"/>
+          <ellipse cx="120" cy="30" rx="6" ry="6" fill="#1a0a05"/>
+          <path d="M84 56 Q100 63 116 56" stroke="#905030" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+      <p class="char-card-class">THE JAVA SOVEREIGN</p>
+      <h3 class="char-card-name">RAJA SOLO</h3>
+      <div class="stats">
+        <div class="stat-row">
+          <span class="stat-label">POWER</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:80%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">CHARISMA</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:100%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">STRATEGY</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:92%"></div></div>
+        </div>
+        <div class="stat-row">
+          <span class="stat-label">SPEED</span>
+          <div class="stat-bar"><div class="stat-fill" style="width:70%"></div></div>
+        </div>
+      </div>
+      <div class="char-ability">
+        <p class="ability-label">Special Ability</p>
+        <p class="ability-name">🔱 SOLO DOMINANCE</p>
+        <p class="ability-desc">"Tenang di luar. Mematikan di arena."</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GAMEPLAY SECTION -->
+<section id="gameplay">
+  <div class="gameplay-header reveal">
+    <p class="section-label">How to Play</p>
+    <h2 class="section-title gold">RULE THE ARENA</h2>
+  </div>
+  <div class="features-grid">
+    <div class="feature-item reveal">
+      <div class="feature-num">01</div>
+      <h3 class="feature-title">BUILD YOUR KINGDOM</h3>
+      <p class="feature-desc">Bangun kekuatan, kumpulkan resource, dan kuasai wilayah. Setiap keputusan membentuk kerajaanmu.</p>
+    </div>
+    <div class="feature-item reveal">
+      <div class="feature-num">02</div>
+      <h3 class="feature-title">DESTROY YOUR RIVAL</h3>
+      <p class="feature-desc">Gunakan strategi, ability, dan special attack untuk menjatuhkan lawan. Tidak ada ampun di arena.</p>
+    </div>
+    <div class="feature-item reveal">
+      <div class="feature-num">03</div>
+      <h3 class="feature-title">BECOME THE KING</h3>
+      <p class="feature-desc">Naikkan ranking dan rebut posisi nomor satu di leaderboard. Hanya satu yang bisa bertakhta.</p>
+    </div>
+  </div>
+
+  <!-- Gameplay Mockup -->
+  <div class="gameplay-mockup reveal">
+    <div class="mockup-inner">
+      <div class="mockup-hud">
+        <div class="hud-bar hud-sawit">
+          <span class="hud-bar-label">RAJA SAWIT</span>
+          <div class="hud-bar-track"><div class="hud-bar-fill"></div></div>
+          <span class="hud-bar-label" style="font-size:.5rem;opacity:.5">HP: 9,200 / 10,000</span>
+        </div>
+        <div class="hud-vs">VS</div>
+        <div class="hud-bar hud-solo">
+          <span class="hud-bar-label">RAJA SOLO</span>
+          <div class="hud-bar-track"><div class="hud-bar-fill"></div></div>
+          <span class="hud-bar-label" style="font-size:.5rem;opacity:.5">HP: 8,500 / 10,000</span>
+        </div>
+      </div>
+      <div class="mockup-arena">
+        <!-- Left fighter mini -->
+        <svg class="arena-fighter" viewBox="0 0 80 160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="24" y="100" width="14" height="50" rx="5" fill="#2a2018"/>
+          <rect x="42" y="100" width="14" height="50" rx="5" fill="#2a2018"/>
+          <rect x="18" y="55" width="44" height="50" rx="8" fill="#f0ede8"/>
+          <rect x="6" y="57" width="16" height="42" rx="8" fill="#f0ede8"/>
+          <rect x="58" y="57" width="16" height="42" rx="8" fill="#f0ede8"/>
+          <ellipse cx="14" cy="100" rx="9" ry="8" fill="#c8956c"/>
+          <ellipse cx="66" cy="100" rx="9" ry="8" fill="#c8956c"/>
+          <ellipse cx="40" cy="40" rx="26" ry="28" fill="#c8956c"/>
+          <rect x="15" y="15" width="50" height="18" rx="9" fill="#2a1a0a"/>
+          <rect x="22" y="34" width="16" height="10" rx="4" fill="#111" opacity=".9"/>
+          <rect x="42" y="34" width="16" height="10" rx="4" fill="#111" opacity=".9"/>
+        </svg>
+        <!-- Center effects -->
+        <div class="arena-effects">
+          <div class="clash-ring"></div>
+          <div class="clash-ring"></div>
+        </div>
+        <!-- Right fighter mini -->
+        <svg class="arena-fighter" style="transform:scaleX(-1)" viewBox="0 0 80 160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="24" y="100" width="14" height="50" rx="5" fill="#1a1228"/>
+          <rect x="42" y="100" width="14" height="50" rx="5" fill="#1a1228"/>
+          <rect x="18" y="55" width="44" height="50" rx="8" fill="#1a0f2e"/>
+          <rect x="6" y="57" width="16" height="42" rx="8" fill="#1a0f2e"/>
+          <rect x="58" y="57" width="16" height="42" rx="8" fill="#1a0f2e"/>
+          <ellipse cx="14" cy="100" rx="9" ry="8" fill="#b87850"/>
+          <ellipse cx="66" cy="100" rx="9" ry="8" fill="#b87850"/>
+          <ellipse cx="40" cy="40" rx="26" ry="28" fill="#b87850"/>
+          <ellipse cx="40" cy="18" rx="24" ry="16" fill="#1a0f2e"/>
+          <rect x="16" y="8" width="48" height="16" rx="4" fill="#1a0f2e"/>
+          <path d="M16 24 Q40 18 64 24" fill="#2a1848"/>
+          <ellipse cx="28" cy="36" rx="8" ry="6" fill="#f5f0e8"/>
+          <ellipse cx="52" cy="36" rx="8" ry="6" fill="#f5f0e8"/>
+        </svg>
+        <div class="arena-ground"></div>
+      </div>
+      <!-- Round indicator -->
+      <div style="position:absolute;bottom:16px;left:50%;transform:translateX(-50%);font-family:'Cinzel',serif;font-size:.7rem;color:var(--gold);letter-spacing:.3em;opacity:.5">ROUND 1 · FIGHT</div>
+    </div>
+  </div>
+</section>
+
+<!-- VERSUS SECTION -->
+<section id="versus">
+  <div class="vs-bg"></div>
+  <div class="vs-left"></div>
+  <div class="vs-right"></div>
+  <canvas id="vs-lightning" style="position:absolute;inset:0;pointer-events:none;"></canvas>
+  <div class="vs-content">
+    <div class="vs-fighter left reveal">
+      <p class="vs-fighter-class">PLANTATION TYCOON</p>
+      <h2 class="vs-fighter-name">RAJA<br>SAWIT</h2>
+      <p class="vs-fighter-tag">"Lahan adalah segalanya."</p>
+    </div>
+    <div class="vs-middle reveal">
+      <div class="vs-emblem">
+        <span class="vs-text">VS</span>
+      </div>
+    </div>
+    <div class="vs-fighter right reveal">
+      <p class="vs-fighter-class">JAVA SOVEREIGN</p>
+      <h2 class="vs-fighter-name">RAJA<br>SOLO</h2>
+      <p class="vs-fighter-tag">"Strategi mengalahkan segalanya."</p>
+    </div>
+    <h3 class="vs-who reveal">WHO WILL RULE?</h3>
+    <div class="vs-enter reveal">
+      <a href="#final-cta" class="btn-primary">⚔ ENTER THE BATTLE</a>
+    </div>
+  </div>
+</section>
+
+<!-- STORY SECTION -->
+<section id="story">
+  <div class="story-inner">
+    <div class="reveal">
+      <p class="section-label">Lore</p>
+      <h2 class="section-title gold">THE WAR FOR<br>THE THRONE</h2>
+    </div>
+    <div class="story-copy reveal">
+      <p>Ketika dua kerajaan bertemu, tidak ada ruang untuk kompromi.</p>
+      <br>
+      <p>Di satu sisi, <strong>kekuatan ekonomi dan perkebunan</strong>.<br>
+      Di sisi lain, <strong>strategi, budaya, dan pengaruh</strong>.</p>
+      <br>
+      <p>Satu arena.<br>Dua raja.<br>Satu tahta.</p>
+    </div>
+    <div class="story-lines reveal">
+      <div class="story-line">
+        <strong>BABAK I — Awal Mula</strong>
+        Dua kekuatan tumbuh dari bumi yang sama, namun memilih jalan berbeda.
+      </div>
+      <div class="story-line">
+        <strong>BABAK II — Benturan Pertama</strong>
+        Lahan bertemu kuasa. Uang berhadapan dengan pengaruh. Arena mulai memanas.
+      </div>
+      <div class="story-line">
+        <strong>BABAK III — Perang Terbuka</strong>
+        Tidak ada lagi diplomasi. Hanya satu yang bisa bertahan di atas tahta.
+      </div>
+      <div class="story-line">
+        <strong>BABAK IV — Penentu</strong>
+        Rakyat memilih. Arena memutuskan. Raja sejati akan berdiri.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard">
+  <div class="lb-header reveal">
+    <p class="section-label">Rankings</p>
+    <h2 class="section-title gold">KINGDOM LEADERBOARD</h2>
+  </div>
+  <div class="lb-table">
+    <div class="lb-row reveal">
+      <span class="lb-rank">#1</span>
+      <span class="lb-name">RAJA SAWIT</span>
+      <span class="lb-xp">98,420 XP</span>
+      <span class="lb-badge">CHAMPION</span>
+    </div>
+    <div class="lb-row reveal">
+      <span class="lb-rank">#2</span>
+      <span class="lb-name">RAJA SOLO</span>
+      <span class="lb-xp">96,850 XP</span>
+      <span class="lb-badge">CONTENDER</span>
+    </div>
+    <div class="lb-row reveal">
+      <span class="lb-rank">#3</span>
+      <span class="lb-name">THE UNKNOWN KING</span>
+      <span class="lb-xp">87,320 XP</span>
+      <span class="lb-badge">RISING</span>
+    </div>
+  </div>
+  <div class="lb-center reveal">
+    <a href="#" class="btn-secondary">VIEW FULL RANKING</a>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<section id="final-cta">
+  <div class="final-bg"></div>
+  <div class="final-glow"></div>
+  <div class="final-content">
+    <h2 class="final-title reveal">THE THRONE<br>IS WAITING.</h2>
+    <p class="final-subtitle reveal">"Pilih rajamu. Bangun kerajaanmu. Taklukkan lawanmu."</p>
+    <div class="reveal">
+      <a href="#hero" class="btn-primary" style="font-size:1.1rem;padding:20px 52px">
+        ⚔️ PLAY RAJA SAWIT vs RAJA SOLO
+      </a>
+    </div>
+    <p class="final-note reveal">No kingdom is safe.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p class="footer-logo">RSVS</p>
+  <p class="footer-copy">RAJA SAWIT vs RAJA SOLO &copy; 2025 — FICTIONAL PARODY GAME — ALL CHARACTERS ARE FICTITIOUS</p>
+  <p class="footer-copy" style="margin-top:6px;opacity:.5">NOT AFFILIATED WITH ANY REAL PERSON, POLITICAL PARTY, OR ORGANIZATION</p>
+</footer>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>
